@@ -60,6 +60,14 @@ const plugin: IPlugin = ({ context, onGetWebpackConfig, modifyUserConfig, getVal
     // alias for runtime/Router
     config.resolve.alias.set('$ice/Router', path.join(__dirname, 'runtime/Router'));
 
+    // fix circular dependency POC 
+    config.resolve.alias.set('#ice/Router', path.join(iceTempPath, 'router/index.ts'));
+    config.resolve.alias.set('#ice/lazy', path.join(iceTempPath, 'lazy.ts'));
+    config.resolve.alias.set('#ice/helpers', path.join(iceTempPath, 'helpers/index.ts'));
+    config.resolve.alias.set('#ice/logger', path.join(iceTempPath, 'logger/index.ts'));
+    config.resolve.alias.set('#ice/config', path.join(iceTempPath, 'config.ts'));
+    config.resolve.alias.set('#ice/components', path.join(iceTempPath, 'components/index.ts'));
+
     // alias for runtime/history
     config.resolve.alias.set('$ice/history', path.join(__dirname, '../templates/history'));
 
